@@ -58,14 +58,18 @@ const impossibles=['Extra Harder','Diamond++','Unsolved',,'Contamination-Proof(i
 const realms=['Underworld','Interstellar','Quantum','Post-Singularity','Prehistoric','Parallel-Universe','Haunted','Orbital','Bureaucratic','Post-Apocalyptic','Dreamworld','Mirror-Dimension','Galactic','Neon'];
 const versions=['2.0','3.5','4.0','5.1','7.0','9.9','42.0','v153.1.1','vNext','v∞','v0.0.1-final', '²', '³', '¾', 'MCMLXXXIV', 'v0', 'Ribbed for your pleasure', 'ka-ching!'];
 const assessments=['Benchmark','Bench','Eval','Exam','Challenge','Arena','Gauntlet'];
+const easterEggs={
+4:['Untss-untss-untss-Bench','Zaphod Beeblebrox for President','All Your Bench Are Belong to Us','Nobody Expects the Spanish Evaluation','Sir, This Is a Benchmark'],
+5:['Kenny!','My Other Benchmark Is a Toaster','This Benchmark Has Been Left Blank Intentionally','Help, I’m Trapped in a Benchmark Factory','The Real Benchmark Was the Friends We Made Along the Way']
+};
 function makeName(level,rng=Math.random){
 level=Number(level);
-// Each easter egg has a 1% chance of replacing the entire name.
-if(level===4){
-const surprise=rng();
-if(surprise<0.01)return 'Untss-untss-untss-Bench';
-if(surprise<0.02)return 'Zaphod Beeblebrox for President';
-}else if(level===5&&rng()<0.01)return 'Kenny!';
+// Each easter egg has a 2% chance of replacing the entire name.
+const surprises=easterEggs[level];
+if(surprises){
+const index=Math.floor(rng()*50);
+if(index<surprises.length)return surprises[index];
+}
 const pick=a=>a[Math.floor(rng()*a.length)];
 const domain=pick(domains),subject=pick(oddSubjects),field=pick(domain.fields);
 // Recipes add components at each level; subject + discipline stay paired.
