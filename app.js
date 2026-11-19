@@ -60,6 +60,13 @@ const realms=['Underworld','Interstellar','Quantum','Post-Singularity','Prehisto
 const versions=['2.0','3.5','4.0','5.1','7.0','9.9','42.0','v153.1.1','vNext','v∞','v0.0.1-final', '²', '³', '¾'];
 const assessments=['Benchmark','Bench','Eval','Exam','Challenge','Arena','Gauntlet'];
 function makeName(level,rng=Math.random){
+level=Number(level);
+// Each easter egg has a 1% chance of replacing the entire name.
+if(level===4){
+const surprise=rng();
+if(surprise<0.01)return 'Untss-untss-untss-Bench';
+if(surprise<0.02)return 'Zaphod Beeblebrox for President';
+}else if(level===5&&rng()<0.01)return 'Kenny!';
 const pick=a=>a[Math.floor(rng()*a.length)];
 const domain=pick(domains),subject=pick(oddSubjects),field=pick(domain.fields);
 // Recipes add components at each level; subject + discipline stay paired.
@@ -75,41 +82,19 @@ case 5:return pick(owners)+' '+pick(finales)+' '+pick(prefixes)+'-'+pick(grandPr
 default:throw new RangeError('Level must be 1–5');
 }
 }
-function nextName(level,previous,excluded,rng=Math.random){
+function nextName(level,previous,rng=Math.random){
 for(let i=0;i<100;i++){
 const candidate=makeName(level,rng);
-if(candidate!==previous&&!excluded.has(candidate.toLowerCase()))return candidate;
+if(candidate!==previous)return candidate;
 }
 throw new Error('Could not find a fresh name');
 }
-
-const harness='https://github.com/EleutherAI/lm-evaluation-harness/tree/main/lm_eval/tasks/';
-const tasks=(items)=>items.split('|').map(x=>{const [name,folder]=x.split('~');return {name,url:harness+folder};});
-const refs=(items)=>items.map(([name,url])=>({name,url}));
-const survey=[
- {title:'Knowledge, science & reasoning',items:tasks('MMLU~mmlu|MMLU-Pro~mmlu_pro|MMLU-Redux~mmlu_redux|MMLU-Pro+~mmlu-pro-plus|GPQA~gpqa|ARC~arc|AGIEval~agieval|LogiQA~logiqa|LogiQA 2.0~logiqa2|SciQ~sciq|OpenBookQA~openbookqa|PIQA~piqa|CommonsenseQA~commonsense_qa|Social IQa~siqa|BIG-bench~bigbench|BIG-Bench Hard~bbh|Mastermind~mastermind|GroundCoCoA~groundcocoa|MetaBench~metabench|SLR-Bench~slr_bench')},
- {title:'Difficulty escalation & grand claims',items:refs([
- ['BIG-Bench Extra Hard','https://github.com/google-deepmind/bbeh'],['SuperGPQA','https://github.com/SuperGPQA/SuperGPQA'],['GPQA Diamond','https://github.com/idavidrein/gpqa'],["Humanity’s Last Exam",'https://www.lastexam.ai/'],['HLE-Diamond','https://www.lastexam.ai/blog/hle-diamond'],['HLE-Rolling','https://www.lastexam.ai/'],['FrontierMath','https://epoch.ai/frontiermath'],['FrontierMath: Open Problems','https://epoch.ai/frontiermath/open-problems'],['FrontierMath Erdős','https://epoch.ai/latest/announcing-frontiermath-erdos']])},
- {title:'Math & competitions',items:tasks('GSM8K~gsm8k|MATH~hendrycks_math|MathQA~mathqa|MGSM~mgsm|Minerva Math~minerva_math|HRM8K~hrm8k|AIME~aime|ASDiv~asdiv|Physics GRE~physics_gre|Putnam Axiom~putnam_axiom')},
- {title:'Code & software engineering',items:[...tasks('HumanEval~humaneval|HumanEval Infilling~humaneval_infilling|MBPP~mbpp|CodeXGLUE~code_x_glue|JSONSchemaBench~jsonschema_bench'),...refs([
- ['SWE-bench','https://www.swebench.com/'],['SWE-bench Verified','https://www.swebench.com/verified.html'],['SWE-bench Lite','https://www.swebench.com/lite.html'],['LiveCodeBench','https://github.com/LiveCodeBench/LiveCodeBench'],['SciCode','https://github.com/scicode-bench/SciCode'],['BigCodeBench','https://github.com/bigcode-project/bigcodebench']])]},
- {title:'Agents, tools & browsing',items:refs([
- ['BrowseComp','https://openai.com/index/browsecomp/'],['WebArena','https://github.com/web-arena-x/webarena'],['OSWorld','https://github.com/xlang-ai/OSWorld'],['AgentBench','https://github.com/THUDM/AgentBench'],['GAIA','https://arxiv.org/abs/2311.12983'],['Terminal-Bench','https://www.tbench.ai/'],['τ-bench','https://github.com/sierra-research/tau-bench'],['ToolBench','https://github.com/OpenBMB/ToolBench'],['Mind2Web','https://github.com/OSU-NLP-Group/Mind2Web'],['AppWorld','https://github.com/StonyBrookNLP/appworld']])},
- {title:'Language, wordplay & comprehension',items:tasks('HellaSwag~hellaswag|WinoGrande~winogrande|BLiMP~blimp|MultiBLiMP~multiblimp|LAMBADA~lambada|GLUE~glue|SuperGLUE~super_glue|SWAG~swag|DROP~drop|CoQA~coqa|RACE~race|SQuAD 2.0~squadv2|TriviaQA~triviaqa|Natural Questions~nq_open|QASPER~qasper|Story Cloze~storycloze|MuTual~mutual|ANLI~anli|MC-TACO~mc_taco')},
- {title:'Long context & instruction following',items:[...tasks('LongBench~longbench|LongBench v2~longbench|RULER~ruler|SCROLLS~scrolls|bAbI~babi|BABILong~babilong|LongProc~longproc|LIBRA~libra|IFEval~ifeval|tinyBenchmarks~tinyBenchmarks'),...refs([['LiveBench','https://github.com/LiveBench/LiveBench'],['InfiniteBench','https://github.com/OpenBMB/InfiniteBench']])]},
- {title:'Safety, bias & factuality',items:[...tasks('TruthfulQA~truthfulqa|BBQ~bbq|CrowS-Pairs~crows_pairs|ETHICS~hendrycks_ethics|ToxiGen~toxigen|Moral Stories~moral_stories|DiscrimEval~discrim_eval|RealToxicityPrompts~realtoxicityprompts|EQ-Bench~eq_bench'),...refs([['SimpleQA','https://openai.com/index/introducing-simpleqa/'],['FACTS','https://deepmind.google/blog/facts-benchmark-suite-systematically-evaluating-the-factuality-of-large-language-models/']])]},
- {title:'Law, medicine & specialist knowledge',items:tasks('LegalBench~legalbench|MedQA~medqa|MedMCQA~medmcqa|PubMedQA~pubmedqa|HEAD-QA~headqa|CareQA~careqa|KorMedMCQA~kormedmcqa|JFinQA~jfinqa|KBL~kbl')},
- {title:'Multilingual & cultural knowledge',items:tasks('Belebele~belebele|C-Eval~ceval|CMMLU~cmmlu|KMMLU~kmmlu|Global-MMLU~global_mmlu|MMLU-ProX~mmlu_prox|ArabicMMLU~arabicmmlu|GreekMMLU~greekmmlu|TurkishMMLU~turkishmmlu|HAERAE~haerae|CLIcK~click|ArabCulture~arabculture|AraDiCE~aradice|MLQA~mlqa|TyDi QA~tydiqa|PAWS-X~paws-x|NorEval~noreval|LingOly~lingoly')},
- {title:'Multimodal understanding',items:refs([
- ['MMMU','https://github.com/MMMU-Benchmark/MMMU'],['MMMU-Pro','https://github.com/MMMU-Benchmark/MMMU'],['MMBench','https://github.com/open-compass/MMBench'],['MathVista','https://github.com/lupantech/MathVista'],['MathVision','https://github.com/mathllm/MATH-Vision'],['ChartQA','https://github.com/vis-nlp/ChartQA'],['DocVQA','https://www.docvqa.org/'],['TextVQA','https://textvqa.org/'],['OCRBench','https://github.com/Yuliang-Liu/MultimodalOCR'],['CharXiv','https://github.com/princeton-nlp/CharXiv'],['ScreenSpot-Pro','https://github.com/likaixin2000/ScreenSpot-Pro-GUI-Grounding'],['ZeroBench','https://github.com/jonathan-roberts1/zerobench']])}
-];
-const realNames=new Set(survey.flatMap(g=>g.items.map(x=>x.name.toLowerCase())));
 
 const $=id=>document.getElementById(id);
 let previous='';
 function generate(){
   const level=Number($('scale').value);
-  previous=nextName(level,previous,realNames);
+  previous=nextName(level,previous);
   $('name').textContent=previous;
   $('name').className=previous.length>110?'epic':previous.length>48?'long':'';
   const result=document.querySelector('.result');
