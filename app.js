@@ -33,24 +33,7 @@ const endings=['Bench','Eval','QA','Test','Arena','Exam','Challenge','LM'];
 const upgrades=['Pro','Hard','Diamond','Verified','Expert','Plus','XL','Advanced','Extreme','Max','Gold','Platinum'];
 const modes=['Adversarial','Multimodal','Long-Horizon','Cross-Domain','Zero-Shot','Agentic','Interactive','Compositional','Out-of-Distribution','Counterfactual','Tool-Augmented','Multilingual', 'Decision'];
 // Odd subjects combine with genuine disciplines, retaining grammatical structure.
-const oddSubjects=[
-{stem:'Fishnet',label:'Deep-Sea Fish'},{stem:'Salmon',label:'Migratory Salmon'},
-{stem:'Ironmonger',label:'Victorian Ironmongers'},{stem:'Pigeon',label:'Urban Pigeons'},
-{stem:'Badonkadonk',label:'Badonkadonk'},{stem:'Fungus',label:'Sentient Mushrooms'},
-{stem:'Goose',label:'Geese'},{stem:'Apiary',label:'Apiary Collectives'},
-{stem:'Toaster',label:'Smart Toasters'},{stem:'Gnome',label:'Garden Gnomes'},
-{stem:'Plumber',label:'Interplanetary Plumbers'},{stem:'Librarian',label:'Time-Travelling Librarians'},
-{stem:'Potato',label:'Conscious Potatoes'},{stem:'Sourdough Starter',label:'Sourdough Civilisations'},
-{stem:'Trolley',label:'Abandoned Shopping Trolleys'},{stem:'Elderberry',label:'Bureaucratic Elderberries'},
-{stem:'VendingMachine',label:'Haunted Vending Machines'},{stem:'Dachshund',label:'Retired Space Dachshunds'},
-{stem:'Goblin',label:'Unionised Goblins'},{stem:'Stapler',label:'Office Staplers'},
-{stem:'Disco',label:'Disco Astronauts'},{stem:'Karaoke',label:'Competitive Karaoke Judges'},
-{stem:'Chumbawamba',label:'Chumbawamba Tribute Bands'},{stem:'Kazoo',label:'Kazoo Orchestras'},
-{stem:'Accordionist',label:'Interdimensional Accordionists'},{stem:'Middle-Management',label:'Middle-Management Dinosaurs'},
-{stem:'Teapot',label:'Orbital Teapots'},{stem:'Capybara',label:'Capybara Cooperatives'},
-{stem:'Sloth',label:'Hypercompetitive Sloths'},{stem:'Beekeeper',label:'Underwater Beekeepers'},
-{stem:'String-Cheese',label:'Self-Aware Cheese Wheels'},{stem:'Fax',label:'Retrofuturist Fax Machines'}
-];
+const oddSubjects=['Fishnet','Salmon','Ironmonger','Pigeon','Badonkadonk','Fungus','Goose','Apiary','Toaster','Gnome','Plumber','Librarian','Potato','Sourdough Starter','Trolley','Elderberry','VendingMachine','Dachshund','Goblin','Stapler','Disco','Karaoke','Chumbawamba','Kazoo','Accordionist','Middle-Management','Teapot','Capybara','Sloth','Beekeeper','String-Cheese','Fax'];
 const grandPrefixes=['Derp','Hyper','Wibbly-Wobbly','PostHuman','OmniFrontier','Max^Max','Transcendental','Quantum','MetaMeta','Recursive','UnreasonablyBig'];
 const owners=['Humanity’s','Civilisation’s','Doritos Presents','God’s','Scunthorpe Council’s','Godzilla’s', 'DJ Jazzy Jeff &', 'Chef’s-kiss-emoji'];
 const finales=['Last','Final','Penultimate','Absolutely Final','Post-Final','Actually Last','Pre-Singularity','Last (Promise)', 'Phillips-head', ];
@@ -60,7 +43,7 @@ const versions=['2.0','3.5','4.0','5.1','7.0','9.9','42.0','v153.1.1','vNext','v
 const assessments=['Benchmark','Bench','Eval','Exam','Challenge','Arena','Gauntlet'];
 const easterEggs={
 4:['Untss-untss-untss-Bench','Zaphod Beeblebrox for President','All Your Bench Are Belong to Us','Nobody Expects the Spanish Evaluation','Sir, This Is a Benchmark'],
-5:['Kenny!','My Other Benchmark Is a Toaster','This Benchmark Has Been Left Blank Intentionally','Help, I’m Trapped in a Benchmark Factory','The Real Benchmark Was the Friends We Made Along the Way']
+5:['Kenny!','My Other Benchmark Is a Toaster','This Benchmark Has Been Intentionally Left Blank','Help, I’m Trapped in a Benchmark Factory!','The Real Benchmark Was the Friends We Made Along the Way']
 };
 function makeName(level,rng=Math.random){
 level=Number(level);
@@ -80,8 +63,8 @@ const omitted=rng()<0.5?Math.floor(rng()*3):-1;
 return (omitted===0?'':pick(prefixes))+(omitted===1?'':domain.stem)+pick(endings)+(omitted===2?'':' '+pick(upgrades));
 }
 case 3:return pick(prefixes)+domain.stem+'Bench '+pick(upgrades)+': '+pick(modes);
-case 4:return pick(grandPrefixes)+'-'+pick(modes)+'-'+pick(realms)+'-'+subject.stem+'-'+domain.stem+'-'+pick(assessments)+' '+pick(upgrades)+' '+pick(versions);
-case 5:return pick(owners)+' '+pick(finales)+' '+pick(prefixes)+'-'+pick(grandPrefixes)+'-'+pick(realms)+'-'+subject.stem+'-'+domain.stem+'-'+pick(assessments)+' '+pick(upgrades)+' '+pick(impossibles)+' '+pick(versions);
+case 4:return pick(grandPrefixes)+'-'+pick(modes)+'-'+pick(realms)+'-'+subject+'-'+domain.stem+'-'+pick(assessments)+' '+pick(upgrades)+' '+pick(versions);
+case 5:return pick(owners)+' '+pick(finales)+' '+pick(prefixes)+'-'+pick(grandPrefixes)+'-'+pick(realms)+'-'+subject+'-'+domain.stem+'-'+pick(assessments)+' '+pick(upgrades)+' '+pick(impossibles)+' '+pick(versions);
 default:throw new RangeError('Level must be 1–5');
 }
 }
