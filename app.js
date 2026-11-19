@@ -34,15 +34,14 @@ const upgrades=['Pro','Hard','Diamond','Verified','Expert','Plus','XL','Advanced
 const modes=['Adversarial','Multimodal','Long-Horizon','Cross-Domain','Zero-Shot','Agentic','Interactive','Compositional','Out-of-Distribution','Counterfactual','Tool-Augmented','Multilingual', 'Decision'];
 // Odd subjects combine with genuine disciplines, retaining grammatical structure.
 const oddSubjects=[
-{stem:'Fish',label:'Deep-Sea Fish'},{stem:'Salmon',label:'Migratory Salmon'},
+{stem:'Fishnet',label:'Deep-Sea Fish'},{stem:'Salmon',label:'Migratory Salmon'},
 {stem:'Ironmonger',label:'Victorian Ironmongers'},{stem:'Pigeon',label:'Urban Pigeons'},
-{stem:'Ferret',label:'Ferrets'},{stem:'Fungus',label:'Sentient Mushrooms'},
+{stem:'Badonkadonk',label:'Badonkadonk'},{stem:'Fungus',label:'Sentient Mushrooms'},
 {stem:'Goose',label:'Geese'},{stem:'Apiary',label:'Apiary Collectives'},
 {stem:'Toaster',label:'Smart Toasters'},{stem:'Gnome',label:'Garden Gnomes'},
 {stem:'Plumber',label:'Interplanetary Plumbers'},{stem:'Librarian',label:'Time-Travelling Librarians'},
-{stem:'Crab',label:'Horseshoe Crabs'},{stem:'Moth',label:'Moths'},
 {stem:'Potato',label:'Conscious Potatoes'},{stem:'Sourdough Starter',label:'Sourdough Civilisations'},
-{stem:'Trolley',label:'Abandoned Shopping Trolleys'},{stem:'Badger',label:'Bureaucratic Badgers'},
+{stem:'Trolley',label:'Abandoned Shopping Trolleys'},{stem:'Elderberry',label:'Bureaucratic Elderberries'},
 {stem:'VendingMachine',label:'Haunted Vending Machines'},{stem:'Dachshund',label:'Retired Space Dachshunds'},
 {stem:'Goblin',label:'Unionised Goblins'},{stem:'Stapler',label:'Office Staplers'},
 {stem:'Disco',label:'Disco Astronauts'},{stem:'Karaoke',label:'Competitive Karaoke Judges'},
@@ -50,14 +49,14 @@ const oddSubjects=[
 {stem:'Accordionist',label:'Interdimensional Accordionists'},{stem:'Middle-Management',label:'Middle-Management Dinosaurs'},
 {stem:'Teapot',label:'Orbital Teapots'},{stem:'Capybara',label:'Capybara Cooperatives'},
 {stem:'Sloth',label:'Hypercompetitive Sloths'},{stem:'Beekeeper',label:'Underwater Beekeepers'},
-{stem:'Cheese',label:'Self-Aware Cheese Wheels'},{stem:'Fax',label:'Retrofuturist Fax Machines'}
+{stem:'String-Cheese',label:'Self-Aware Cheese Wheels'},{stem:'Fax',label:'Retrofuturist Fax Machines'}
 ];
-const grandPrefixes=['Derp','Hyper','Ultra','PostHuman','OmniFrontier','Max^Max','Transcendental','Quantum','MetaMeta','Recursive','UnreasonablyBig'];
+const grandPrefixes=['Derp','Hyper','Wibbly-Wobbly','PostHuman','OmniFrontier','Max^Max','Transcendental','Quantum','MetaMeta','Recursive','UnreasonablyBig'];
 const owners=['Humanity’s','Civilisation’s','Doritos Presents','God’s','Scunthorpe Council’s','Godzilla’s', 'DJ Jazzy Jeff &', 'Chef’s-kiss-emoji'];
-const finales=['Last','Final','Penultimate','Absolutely Final','Post-Final','Actually Last','Pre-Singularity','Ultimate', 'Phillips-head', ];
+const finales=['Last','Final','Penultimate','Absolutely Final','Post-Final','Actually Last','Pre-Singularity','Last (Promise)', 'Phillips-head', ];
 const impossibles=['Extra Harder','Diamond++','Unsolved',,'Contamination-Proof(ish)','AGI-Certified','Saturation-Resistant','Peer-Review-Proof','Infinite-Context','Self-Destructive'];
 const realms=['Underworld','Interstellar','Quantum','Post-Singularity','Prehistoric','Parallel-Universe','Haunted','Orbital','Bureaucratic','Post-Apocalyptic','Dreamworld','Mirror-Dimension','Galactic','Neon'];
-const versions=['2.0','3.5','4.0','5.1','7.0','9.9','42.0','v153.1.1','vNext','v∞','v0.0.1-final', '²', '³', '¾'];
+const versions=['2.0','3.5','4.0','5.1','7.0','9.9','42.0','v153.1.1','vNext','v∞','v0.0.1-final', '²', '³', '¾', 'MCMLXXXIV', 'v0', 'Ribbed for your pleasure', 'ka-ching!'];
 const assessments=['Benchmark','Bench','Eval','Exam','Challenge','Arena','Gauntlet'];
 function makeName(level,rng=Math.random){
 level=Number(level);
