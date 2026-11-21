@@ -64,7 +64,7 @@ return (omitted===0?'':pick(prefixes))+(omitted===1?'':domain.stem)+pick(endings
 }
 case 3:return pick(prefixes)+domain.stem+'Bench '+pick(upgrades)+': '+pick(modes);
 case 4:return pick(grandPrefixes)+'-'+pick(modes)+'-'+pick(realms)+'-'+subject+'-'+domain.stem+'-'+pick(assessments)+' '+pick(upgrades)+' '+pick(versions);
-case 5:return pick(owners)+' '+pick(finales)+' '+pick(prefixes)+'-'+pick(grandPrefixes)+'-'+pick(realms)+'-'+subject+'-'+domain.stem+'-'+pick(assessments)+' '+pick(upgrades)+' '+pick(impossibles)+' '+pick(versions);
+case 5:return pick(owners)+' '+(rng()<0.4?pick(finales)+' ':'')+pick(prefixes)+'-'+pick(grandPrefixes)+'-'+pick(realms)+'-'+subject+'-'+domain.stem+'-'+pick(assessments)+' '+pick(upgrades)+' '+pick(impossibles)+' '+pick(versions);
 default:throw new RangeError('Level must be 1–5');
 }
 }
