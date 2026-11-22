@@ -29,6 +29,7 @@ const index=Math.floor(rng()*50);
 if(index<surprises.length)return surprises[index];
 }
 const pick=a=>a[Math.floor(rng()*a.length)];
+const hyphen=value=>value===''?'':value+'-';
 const domain=pick(domains),subject=pick(oddSubjects);
 // Recipes add components at each level; subject + discipline stay paired.
 switch(Number(level)){
@@ -38,8 +39,8 @@ const omitted=rng()<0.5?Math.floor(rng()*3):-1;
 return (omitted===0?'':pick(prefixes))+(omitted===1?'':domain)+pick(endings)+(omitted===2?'':' '+pick(upgrades));
 }
 case 3:return pick(prefixes)+domain+'Bench '+pick(upgrades)+': '+pick(modes);
-case 4:return pick(grandPrefixes)+'-'+pick(modes)+'-'+pick(realms)+'-'+subject+'-'+domain+'-'+pick(assessments)+' '+pick(upgrades)+' '+pick(versions);
-case 5:return pick(owners)+' '+(rng()<0.4?pick(finales)+' ':'')+pick(prefixes)+'-'+pick(grandPrefixes)+'-'+pick(realms)+'-'+subject+'-'+domain+'-'+pick(assessments)+' '+pick(upgrades)+' '+pick(impossibles)+' '+pick(versions);
+case 4:return hyphen(pick(grandPrefixes))+hyphen(pick(modes))+hyphen(pick(realms))+hyphen(subject)+hyphen(domain)+pick(assessments)+' '+pick(upgrades)+' '+pick(versions);
+case 5:return pick(owners)+' '+(rng()<0.4?pick(finales)+' ':'')+hyphen(pick(prefixes))+hyphen(pick(grandPrefixes))+hyphen(pick(realms))+hyphen(subject)+hyphen(domain)+pick(assessments)+' '+pick(upgrades)+' '+pick(impossibles)+' '+pick(versions);
 default:throw new RangeError('Level must be 1–5');
 }
 }
