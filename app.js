@@ -2,19 +2,19 @@
 'use strict';
 
 const levels=['Simple','Plausible','Ambitious','Absurd','Unhinged'];
-const domains=['Law','Med','SWE','Fin','Bio','Math','Chem','Geo','Astro','Econ','Linguistics','Logistics','Civic','Agri','Art','Mech', '', '', '', ''];
+const domains=['Law','Med','SWE','Fin','Bio','Math','Chem','Geo','Astro','Econ','Linguistics','Civic','Agri','Art','Mech', '', '', '', ''];
 const roots=['Reason','Logic','Proof','Context','Query','Plan','Recall','Task','Fact','Code','Agent','Skill','Tool','Science','Sense','Knowledge','Vision','Search','World','Causal','Memory','Puzzle','Ground','Language','Decision','Trust','Schema','Action','Dialogue','Concept'];
 const prefixes=['Deep','Super','Mega','Ultra','Hyper','Omni','Meta','Frontier','Live','Open','Big','Long','Multi','Cross','Real','Beyond'];
 const endings=['Bench','Eval','QA','Test','Arena','Exam','Challenge','LM'];
 const upgrades=['Pro','Hard','Diamond','Verified','Expert','Plus','XL','Advanced','Extreme','Max','Gold','Platinum'];
 const modes=['Adversarial','Multimodal','Long-Horizon','Cross-Domain','Zero-Shot','Agentic','Interactive','Compositional','Out-of-Distribution','Counterfactual','Tool-Augmented','Multilingual', 'Decision'];
 const oddSubjects=['Fishnet','Salmon','Ironmonger','Pigeon','Badonkadonk','Fungus','Goose','Apiary','Toaster','Gnome','Librarian','Sourdough Starter','Elderberry','Dachshund','Goblin','Chumbawamba','Kazoo','Accordionist','Middle-Management','Teapot','Capybara','Sloth','Beekeeper','String-Cheese','Fax Machine'];
-const grandPrefixes=['Derp','Hyper','Wibbly-Wobbly','PostHuman','OmniFrontier','Max^Max','Transcendental','Quantum','MetaMeta','Recursive','UnreasonablyBig'];
-const owners=['Humanity’s','Civilisation’s','Doritos® Presents','God’s','Scunthorpe Council’s','Godzilla’s', 'DJ Jazzy Jeff &', 'Chef’s-kiss-emoji', '🤷', 'Chicago Style', '', '', ''];
+const grandPrefixes=['Derp','Hyper','Wibbly-Wobbly','PostHuman','OmniFrontier','Max^Max','Transcendental','Load-Bearing','MetaMeta','Recursive','UnreasonablyBig', ''];
+const owners=['Humanity’s','Civilisation’s','Doritos® Presents','God’s','Scunthorpe Council’s','Godzilla’s', 'DJ Jazzy Jeff &', 'Chef’s-kiss-emoji', '🤷', 'Chicago Style', 'The', '', '', ''];
 const finales=['Penultimate','Post-Final','Actually Last','Pre-Singularity','Last (Promise)', 'Phillips-head'];
 const impossibles=['Extra Harder','Diamond++','Unsolved','Contamination-Proof(ish)','AGI-Certified','Saturation-Resistant','Peer-Review-Proof','Infinite-Context','Self-Destructive'];
 const realms=['Underworld','Interstellar','Anachronistic','Post-Singularity','Prehistoric','Parallel-Universe','Haunted','Orbital','Bureaucratic','Post-Apocalyptic','Dreamworld','Mirror-Dimension','Galactic','Neon'];
-const versions=['2.0','3.5','4.0','5.1','7.0','9.9','42.0','v153.1.1','vNext','v∞','v0.0.1-final', '²', '³', '¾', 'MCMLXXXIV', 'v0', 'Ribbed for your pleasure', 'ka-ching!'];
+const versions=['2.0','3.5','4.0','5.1','7.0','9.9','42.0','v153.1.1','vNext','v∞','v0.0.1.final', '²', '³', '¾', 'MCMLXXXIV', 'v0', 'Ribbed for your pleasure', 'ka-ching!'];
 const assessments=['Benchmark','Bench','Eval','Exam','Challenge','Arena','Gauntlet'];
 const easterEggs={
 4:['Untss-untss-untss-Bench','Zaphod Beeblebrox for President','All Your Bench Are Belong to Us','Nobody Expects the Spanish Evaluation','Sir, This Is a Benchmark', '-... . -. -.-. ....'],
